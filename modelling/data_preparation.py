@@ -58,7 +58,7 @@ raw_datasets = load_dataset("text", data_files=[dataset_file])
 # in turn have a unique token.
 
 tokenizer = Tokenizer(BPE(unk_token="[UNK]"))
-#Include specal tokens for unkown words and padding (which is needed to create even sized data points)
+#Include special tokens for unkown words and padding (which is needed to create even sized data points)
 trainer = BpeTrainer(vocab_size=12000, special_tokens=["[UNK]", "[PAD]"])
 # Split the text in actual words (Whitespace splits on space and punctuation)
 tokenizer.pre_tokenizer = Whitespace()

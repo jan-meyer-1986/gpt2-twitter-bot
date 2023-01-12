@@ -16,8 +16,6 @@ def find_longest_possible_tweet(generated_sequence):
         else:
             longest_tweet = candidate_tweet
 
-
-
 def generate_tweet(model, prompt):
 
     input_ids = tokenizer.encode(prompt, return_tensors="pt")
@@ -38,7 +36,7 @@ prompts = open('common_prompts.txt','r')
 prompts = eval(prompts.read())
 
 # The same tokenizer as during modelling is loaded
-tokenizer = PreTrainedTokenizerFast(tokenizer_file="../modelling/tokenizer_12layers.json")
+tokenizer = PreTrainedTokenizerFast(tokenizer_file="../modelling/tokenizer.json")
 tokenizer.add_special_tokens({"pad_token": "[PAD]"})
 
 # The model is loaded, using the same configurations as during modelling
@@ -53,7 +51,7 @@ model_config = GPT2Config(
     n_embd=512
 )
 model = GPT2LMHeadModel(model_config)
-model.load_state_dict(torch.load("../modelling/kimilsung_model_50books_12layers.pt" ,map_location=torch.device('cpu')))
+model.load_state_dict(torch.load("../modelling/trained_model.pt" ,map_location=torch.device('cpu')))
 
 amount_tweets = 100
 counter = 0

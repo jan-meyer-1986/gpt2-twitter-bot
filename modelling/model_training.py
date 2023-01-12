@@ -125,5 +125,5 @@ trainer = Trainer(
 trainer.train()
 tokenizer.save_pretrained("model")
 model.save_pretrained("model")
-path = "kimilsung_model_50books_12layers.pt"
+path = "trained_model.pt"
 torch.save(model.state_dict(), path)
